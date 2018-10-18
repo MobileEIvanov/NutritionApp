@@ -1,5 +1,6 @@
 package com.playground.nutrition.data.remote;
 
+import com.playground.nutrition.BuildConfig;
 import com.playground.nutrition.data.entities.ResponseRecipesRequest;
 
 import retrofit2.Call;
@@ -10,7 +11,7 @@ import retrofit2.http.GET;
  */
 public interface RecipeServiceAPI {
 
-    @GET("")
+    @GET("/get?key=" + BuildConfig.SERVICE_API_KEY)
     Call<ResponseRecipesRequest> queryAll();
 
 }

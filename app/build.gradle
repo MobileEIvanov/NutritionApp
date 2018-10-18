@@ -1,6 +1,11 @@
 apply plugin: 'com.android.application'
 
+def apiPropertiesFile = rootProject.file("key.properties")
+def apiProperties = new Properties()
+apiProperties.load(new FileInputStream(apiPropertiesFile))
+
 android {
+
     compileSdkVersion 28
     defaultConfig {
         applicationId "com.playground.nutrition"
@@ -10,8 +15,15 @@ android {
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
+        buildConfigField 'String', 'SERVICE_API_KEY', apiProperties['SERVICE_API_KEY']
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = ["room.schemaLocation":
+                                     "$projectDir/schemas".toString()]
+            }
+        }
     }
-    dataBinding{
+    dataBinding {
         enabled = true
     }
 
@@ -35,7 +47,6 @@ dependencies {
     implementation "com.android.support.constraint:constraint-layout:$constraintLayoutVersion"
     implementation "com.android.support:design:$supportLibVersion"
 
-
     // architecture components
     implementation "android.arch.lifecycle:extensions:$archComponentsVersion"
     implementation "android.arch.lifecycle:runtime:$archComponentsVersion"
@@ -46,7 +57,7 @@ dependencies {
 
     // retrofit
     implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
-    implementation"com.squareup.retrofit2:converter-gson:$retrofitVersion"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofitVersion"
     implementation "com.squareup.retrofit2:retrofit-mock:$retrofitVersion"
     implementation "com.squareup.okhttp3:logging-interceptor:$okhttpLoggingInterceptorVersion"
     implementation "com.facebook.stetho:stetho:$stetho_logger"
@@ -54,6 +65,7 @@ dependencies {
 
 
     testImplementation 'junit:junit:4.12'
+    testImplementation 'org.mockito:mockito-core:2.8.47'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 }

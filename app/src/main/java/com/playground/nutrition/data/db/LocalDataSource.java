@@ -51,6 +51,6 @@ public class LocalDataSource {
     }
 
     public DataSource.Factory<Integer, Recipe> queryAll() {
-        return database.foodDao().queryAll();
+        return database.foodDao().queryForAll();
     }
 }

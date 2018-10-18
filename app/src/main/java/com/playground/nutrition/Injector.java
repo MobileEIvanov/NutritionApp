@@ -21,7 +21,7 @@ public class Injector {
     /**
      * NETWORK RELATED INJECTIONS
      */
-    private static final String BASE_URL = "";
+    private static final String BASE_URL = "https://www.food2fork.com/api/";
 
     private static OkHttpClient providesHttpClient() {
         HttpLoggingInterceptor logger = new HttpLoggingInterceptor();

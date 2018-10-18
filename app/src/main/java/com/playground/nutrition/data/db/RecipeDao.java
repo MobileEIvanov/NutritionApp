@@ -29,9 +29,8 @@ public interface RecipeDao {
     @Update(onConflict = OnConflictStrategy.REPLACE)
     void update(Recipe recipe);
 
-
     @Query(QUERY_ALL)
-    DataSource.Factory<Integer, Recipe> queryAll();
+    DataSource.Factory<Integer, Recipe> queryForAll();
 
 
 }
