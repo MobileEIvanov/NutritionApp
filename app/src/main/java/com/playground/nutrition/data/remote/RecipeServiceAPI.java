@@ -5,13 +5,14 @@ import com.playground.nutrition.data.entities.ResponseRecipesRequest;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
+import retrofit2.http.Query;
 
 /**
  * Created by emil.ivanov on 10/17/18.
  */
 public interface RecipeServiceAPI {
 
-    @GET("/get?key=" + BuildConfig.SERVICE_API_KEY)
-    Call<ResponseRecipesRequest> queryAll();
+    @GET("api/search?key=" + BuildConfig.SERVICE_API_KEY)
+    Call<ResponseRecipesRequest> searchQuery(@Query("q") String searchQuery, @Query("page") int page);
 
 }

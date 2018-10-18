@@ -91,7 +91,7 @@ public class Recipe {
 
     public Ingredients getUsedIngredients() {
         if (ingredients != null) {
-            usedIngredients.setIngredients(ingredients);
+            usedIngredients = new Ingredients(ingredients);
         }
         return usedIngredients;
     }

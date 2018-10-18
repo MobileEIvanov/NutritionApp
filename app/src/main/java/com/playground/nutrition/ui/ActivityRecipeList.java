@@ -6,6 +6,7 @@ import android.databinding.DataBindingUtil;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.widget.Toast;
 
 import com.facebook.stetho.Stetho;
@@ -15,6 +16,7 @@ import com.playground.nutrition.databinding.ActivityRecipeListBinding;
 public class ActivityRecipeList extends AppCompatActivity {
     ActivityRecipeListBinding binding;
     public static final String LATEST_QUERY = "last_query";
+    public static final String DEFAULT_QUERY = "chicken";
     RecipesViewModel mViewModel;
     AdapterRecipes mAdapter = new AdapterRecipes(AdapterRecipes.COMPARE_RECIPES);
 
@@ -33,11 +35,17 @@ public class ActivityRecipeList extends AppCompatActivity {
         }
 
         initAdapter();
-        mViewModel.queryAll(query);
         initErrorHandler();
+
+        if (TextUtils.isEmpty(query)) {
+            query = DEFAULT_QUERY;
+        }
+        mViewModel.queryAll(query);
+
     }
 
     private void initAdapter() {
+        binding.rvRecipes.setAdapter(mAdapter);
         mViewModel.foodsData.observe(this, recipes -> mAdapter.submitList(recipes));
     }
 

@@ -27,11 +27,11 @@ public class Repository {
     }
 
 
-    public ResponseRecipesWrapper queryAll() {
+    public ResponseRecipesWrapper searchQuery(String searchQuery) {
 
-        DataSource.Factory<Integer, Recipe> factory = localDataSource.queryAll();
+        DataSource.Factory<Integer, Recipe> factory = localDataSource.searchQuery(searchQuery);
 
-        DataBoudnaryCallback boudnaryCallback = new DataBoudnaryCallback(remoteDataSource, localDataSource);
+        DataBoudnaryCallback boudnaryCallback = new DataBoudnaryCallback(searchQuery, remoteDataSource, localDataSource);
 
         LiveData<String> networkErrors = boudnaryCallback.getNetworkErrors();
 

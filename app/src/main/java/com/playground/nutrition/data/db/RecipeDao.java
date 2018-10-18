@@ -30,7 +30,7 @@ public interface RecipeDao {
     void update(Recipe recipe);
 
     @Query(QUERY_ALL)
-    DataSource.Factory<Integer, Recipe> queryForAll();
+    DataSource.Factory<Integer, Recipe> searchQuery();
 
 
 }

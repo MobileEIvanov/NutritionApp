@@ -12,16 +12,16 @@ import retrofit2.Callback;
  */
 public class RemoteDataSource {
 
-    RecipeServiceAPI service;
+    private RecipeServiceAPI service;
 
     public RemoteDataSource(RecipeServiceAPI serviceAPI) {
         service = serviceAPI;
     }
 
-    public void queryAll(Callback<ResponseRecipesRequest> callback) {
+    public void searchQuery(String searchQuery, int page, Callback<ResponseRecipesRequest> callback) {
         AppExecutors.getInstance().networkIO().execute(() -> {
             try {
-                callback.onResponse(service.queryAll(), service.queryAll().execute());
+                callback.onResponse(service.searchQuery(searchQuery, page), service.searchQuery(searchQuery, page).execute());
             } catch (IOException e) {
                 e.printStackTrace();
             }

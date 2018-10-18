@@ -21,6 +21,6 @@ public class VHRecipe extends RecyclerView.ViewHolder {
     }
 
     public void bindData(Recipe recipe) {
-
+        binding.tvRecipeTitle.setText(recipe.getTitle());
     }
 }

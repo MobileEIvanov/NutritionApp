@@ -24,10 +24,14 @@ class DataBoudnaryCallback extends PagedList.BoundaryCallback<Recipe> {
     private RemoteDataSource service;
     private LocalDataSource database;
     private MutableLiveData<String> _networkErrors = new MutableLiveData<>();
+    private String query;
+    private int _lastRequestedPage = 1;
+    private boolean _isRequestInProgress = false;
 
-    public DataBoudnaryCallback(RemoteDataSource service, LocalDataSource database) {
+    public DataBoudnaryCallback(String searchQuery, RemoteDataSource service, LocalDataSource database) {
         this.service = service;
         this.database = database;
+        this.query = searchQuery;
     }
 
 
@@ -43,15 +47,23 @@ class DataBoudnaryCallback extends PagedList.BoundaryCallback<Recipe> {
 
 
     private void requestAndSaveData() {
-        service.queryAll(new Callback<ResponseRecipesRequest>() {
+        if (_isRequestInProgress) {
+            return;
+        }
+        _isRequestInProgress = true;
+
+        service.searchQuery(query, _lastRequestedPage, new Callback<ResponseRecipesRequest>() {
             @Override
             public void onResponse(Call<ResponseRecipesRequest> call, Response<ResponseRecipesRequest> response) {
                 if (response.isSuccessful()) {
+                    _lastRequestedPage++;
                     ResponseRecipesRequest responseRecipesRequest = response.body();
                     if (responseRecipesRequest != null) {
                         database.insert(responseRecipesRequest.getListData());
                     }
+                    _isRequestInProgress=false;
                 } else {
+                    _isRequestInProgress=false;
                     _networkErrors.postValue(DEFAULT_NETWORK_ERROR);
                 }
             }
@@ -59,6 +71,7 @@ class DataBoudnaryCallback extends PagedList.BoundaryCallback<Recipe> {
             @Override
             public void onFailure(Call<ResponseRecipesRequest> call, Throwable t) {
                 _networkErrors.postValue(t.getMessage());
+                _isRequestInProgress=false;
             }
         });
 

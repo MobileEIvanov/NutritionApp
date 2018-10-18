@@ -22,7 +22,7 @@ class RecipesViewModel extends ViewModel {
     private LiveData<ResponseRecipesWrapper> _repoResponse = Transformations.map(_requestQuery, new Function<String, ResponseRecipesWrapper>() {
         @Override
         public ResponseRecipesWrapper apply(String input) {
-            return repository.queryAll();
+            return repository.searchQuery(input);
         }
     });
 

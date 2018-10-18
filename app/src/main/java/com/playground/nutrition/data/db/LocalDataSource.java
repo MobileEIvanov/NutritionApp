@@ -50,7 +50,7 @@ public class LocalDataSource {
         });
     }
 
-    public DataSource.Factory<Integer, Recipe> queryAll() {
-        return database.foodDao().queryForAll();
+    public DataSource.Factory<Integer, Recipe> searchQuery(String searchQuery) {
+        return database.foodDao().searchQuery();
     }
 }
