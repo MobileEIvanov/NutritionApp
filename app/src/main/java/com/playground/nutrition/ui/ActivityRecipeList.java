@@ -3,9 +3,10 @@ package com.playground.nutrition.ui;
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 import android.databinding.DataBindingUtil;
+import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
+import android.support.v7.widget.DividerItemDecoration;
 import android.text.TextUtils;
 import android.widget.Toast;
 
@@ -40,11 +41,14 @@ public class ActivityRecipeList extends AppCompatActivity {
         if (TextUtils.isEmpty(query)) {
             query = DEFAULT_QUERY;
         }
+
+
         mViewModel.queryAll(query);
 
     }
 
     private void initAdapter() {
+
         binding.rvRecipes.setAdapter(mAdapter);
         mViewModel.foodsData.observe(this, recipes -> mAdapter.submitList(recipes));
     }
