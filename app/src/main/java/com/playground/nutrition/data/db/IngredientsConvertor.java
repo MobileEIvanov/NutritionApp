@@ -12,19 +12,19 @@ import java.util.List;
  */
 public class IngredientsConvertor {
 
-    @TypeConverter
-    public Ingredients storedStringToIngredientList(String value) {
-        List<String> langs = Arrays.asList(value.split("\\s*,\\s*"));
-        return new Ingredients(langs);
-    }
-
-    @TypeConverter
-    public String ingredientToStoredString(Ingredients ingredients) {
-        String value = "";
-
-        for (String ingredient : ingredients.getList())
-            value += ingredient + ",";
-
-        return value;
-    }
+//    @TypeConverter
+//    public Ingredients storedStringToIngredientList(String value) {
+//        List<String> langs = Arrays.asList(value.split("\\s*,\\s*"));
+//        return new Ingredients(langs);
+//    }
+//
+//    @TypeConverter
+//    public String ingredientToStoredString(Ingredients ingredients) {
+//        String value = "";
+//
+//        for (String ingredient : ingredients.getList())
+//            value += ingredient + ",";
+//
+//        return value;
+//    }
 }

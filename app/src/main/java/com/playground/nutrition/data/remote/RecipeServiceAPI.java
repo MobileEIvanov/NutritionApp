@@ -12,7 +12,7 @@ import retrofit2.http.Query;
  */
 public interface RecipeServiceAPI {
 
-    @GET("api/search?key=" + BuildConfig.SERVICE_API_KEY)
-    Call<ResponseRecipesRequest> searchQuery(@Query("q") String searchQuery, @Query("page") int page);
+    @GET("api/?")
+    Call<ResponseRecipesRequest> searchQuery(@Query("q") String searchQuery, @Query("p") int page);
 
 }

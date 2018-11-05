@@ -7,7 +7,6 @@ import android.arch.persistence.room.TypeConverters;
 import android.content.Context;
 import android.util.Log;
 
-import com.playground.nutrition.entities.Ingredients;
 import com.playground.nutrition.entities.Recipe;
 
 /**
@@ -15,7 +14,7 @@ import com.playground.nutrition.entities.Recipe;
  */
 
 @Database(entities = {Recipe.class}, version = 1, exportSchema = false)
-@TypeConverters({DateConverter.class, IngredientsConvertor.class})
+@TypeConverters({DateConverter.class})
 public abstract class RecipesDatabase extends RoomDatabase {
 
 

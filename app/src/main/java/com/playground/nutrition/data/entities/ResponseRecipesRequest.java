@@ -11,10 +11,10 @@ import java.util.List;
  * Created by emil.ivanov on 10/17/18.
  */
 public class ResponseRecipesRequest {
-    @SerializedName(RecipeContract.PARAM_COUNT)
-    int count;
-    @SerializedName(RecipeContract.PARAM_PAGE)
-    int page;
+//    @SerializedName(RecipeContract.PARAM_COUNT)
+//    int count;
+//    @SerializedName(RecipeContract.PARAM_PAGE)
+//    int page;
     @SerializedName(RecipeContract.PARAM_RECIPES_COLLECTION)
     List<Recipe> recipeList;
 

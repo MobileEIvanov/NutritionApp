@@ -1,8 +1,8 @@
 apply plugin: 'com.android.application'
 
-def apiPropertiesFile = rootProject.file("key.properties")
-def apiProperties = new Properties()
-apiProperties.load(new FileInputStream(apiPropertiesFile))
+//def apiPropertiesFile = rootProject.file("key.properties")
+//def apiProperties = new Properties()
+//apiProperties.load(new FileInputStream(apiPropertiesFile))
 
 android {
 
@@ -15,7 +15,7 @@ android {
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
-        buildConfigField 'String', 'SERVICE_API_KEY', apiProperties['SERVICE_API_KEY']
+//        buildConfigField 'String', 'SERVICE_API_KEY', apiProperties['SERVICE_API_KEY']
         javaCompileOptions {
             annotationProcessorOptions {
                 arguments = ["room.schemaLocation":
