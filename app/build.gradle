@@ -81,5 +81,4 @@ dependencies {
     testImplementation "org.hamcrest:hamcrest-all:$hamcrestVersion"
     testImplementation "org.powermock:powermock-module-junit4:$powerMockito"
     testImplementation "org.powermock:powermock-api-mockito:$powerMockito"
-
 }
