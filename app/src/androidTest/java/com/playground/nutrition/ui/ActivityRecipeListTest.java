@@ -5,6 +5,7 @@ import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 
 import com.playground.nutrition.R;
+import com.playground.nutrition.ui.recipes.ActivityRecipeList;
 
 import org.junit.Rule;
 import org.junit.Test;
@@ -31,5 +32,8 @@ public class ActivityRecipeListTest {
     public void test_list_is_Displayed() {
         onView(withId(R.id.rv_recipes)).check(matches(isDisplayed()));
     }
+
+
+
 
 }

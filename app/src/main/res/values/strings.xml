@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Nutrition</string>
+    <string name="content_search_query">Perform Search for recipe</string>
+    <string name="hint_search_recipe">Search recipe</string>
 </resources>

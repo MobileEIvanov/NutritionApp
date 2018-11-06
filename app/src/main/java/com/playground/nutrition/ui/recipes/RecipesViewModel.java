@@ -1,4 +1,4 @@
-package com.playground.nutrition.ui;
+package com.playground.nutrition.ui.recipes;
 
 
 import android.arch.core.util.Function;

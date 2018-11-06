@@ -1,4 +1,4 @@
-package com.playground.nutrition.ui;
+package com.playground.nutrition.ui.recipes;
 
 import android.arch.paging.PagedListAdapter;
 import android.support.annotation.NonNull;

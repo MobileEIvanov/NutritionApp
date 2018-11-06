@@ -3,4 +3,5 @@
     <dimen name="horizontal_padding">16dp</dimen>
     <dimen name="row_height_list_item">72dp</dimen>
     <dimen name="vertical_margin">8dp</dimen>
+    <dimen name="padding_search_view">16dp</dimen>
 </resources>
